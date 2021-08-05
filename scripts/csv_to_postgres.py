@@ -1,8 +1,8 @@
 import os
-from dotenv import load_dotenv
+import sys
 import datetime
-
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
 load_dotenv()
@@ -40,6 +40,7 @@ df = df.drop(nullIndexes)
 try:
     df.to_sql('penguins',engine)
     pen = engine.execute("SELECT * FROM penguins")
-    print(pen)
+    print('Done sample-->',next(pen))
 except Exception as err:
     print(err)
+    sys.exit(1)
