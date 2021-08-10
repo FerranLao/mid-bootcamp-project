@@ -5,6 +5,6 @@ from configs.postgres import pgdb
 
 @app.route("/")
 def helloWordl():
-    query = pgdb.execute("SELECT * FROM penguins;")
-    print(next(query))
+    query = pgdb.execute("SELECT * FROM penguins;").fetchall()
+    print(query)
     return 'Hello world'
