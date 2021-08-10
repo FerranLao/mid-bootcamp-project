@@ -1,10 +1,8 @@
 import json
-from flask import request
 from app import app
-from configs.postgres import pgdb
+from configs.postgres import json_query
 
 @app.route("/")
 def helloWordl():
-    query = pgdb.execute("SELECT * FROM penguins;").fetchall()
-    print(query)
-    return 'Hello world'
+    query = json_query("SELECT * FROM penguins;")
+    return query
